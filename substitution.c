@@ -52,15 +52,21 @@ int main(int argc, string argv[])
 
 
     }
-    
+    //convert key to uppercase
+    for(int i=0; i < key_length; i++)
+    {
+        if(key[i]>='a' && key[i]<='z')
+        {
+            key[i] = key[i] - 32;
+        }
+    }
     printf ("key: %s\n", key);
 
-    //get input text
+     //get input text
     string text = get_string("Input your text to be encrypted:");
-    /// text CCC
     int text_length = strlen(text);
     printf("text length: %i\n", text_length);
-    printf("ciphertext: "); 
+    printf("ciphertext: ");
     //encipher text
     // Cipher key : YTNSHKVEFXRBAUQZCLWDMIPGJO
   for (counter4 = 0; counter4 < text_length; counter4++)
@@ -68,12 +74,21 @@ int main(int argc, string argv[])
        for (counter5=0; counter5 < 26; counter5++)
        {
            if (isupper(text[counter4]))
-           printf ("%c",(argv[1][counter4]));
+           {
+           printf ("%c",(argv[1][counter5]));
+           }
+           else if (islower(text[counter4]))
+           {
+           printf ("%c",(argv[1][counter5] - 32));
+           }
+           else
+           {
+            printf("%c", text[counter4]);
+           }
        }
 
         printf("\n");
         return 0;
     }
-    
 
 }
