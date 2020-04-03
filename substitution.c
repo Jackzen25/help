@@ -23,7 +23,7 @@ int main(int argc, string argv[])
     {
         if (isalpha(argv[1][counter1]))
         {
-         letters++;
+            letters++;
         }
     }
     if (letters != 26)
@@ -53,42 +53,48 @@ int main(int argc, string argv[])
 
     }
     //convert key to uppercase
-    for(int i=0; i < key_length; i++)
+    for (int i = 0; i < key_length; i++)
     {
-        if(key[i]>='a' && key[i]<='z')
+        if (key[i] >= 'a' && key[i] <= 'z')
         {
             key[i] = key[i] - 32;
         }
     }
-    printf ("key: %s\n", key);
+    printf("key: %s\n", key);
 
-     //get input text
+    //get input text
     string text = get_string("Input your text to be encrypted:");
     int text_length = strlen(text);
     printf("text length: %i\n", text_length);
     printf("ciphertext: ");
     //encipher text
     // Cipher key : YTNSHKVEFXRBAUQZCLWDMIPGJO
-  for (counter4 = 0; counter4 < text_length; counter4++)
+    string alpha = "abcdefghijklmnopqrstuvwxyz";
+    string Ualpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (counter4 = 0; counter4 < text_length; counter4++)
     {
-       for (counter5=0; counter5 < 26; counter5++)
-       {
-           if (isupper(text[counter4]))
-           {
-           printf ("%c",(argv[1][counter5]));
-           }
-           else if (islower(text[counter4]))
-           {
-           printf ("%c",(argv[1][counter5] - 32));
-           }
-           else
-           {
+        if (isalpha(text[counter4]))
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                if (text[counter4] == Ualpha[i])
+                {
+                    printf("%c", key[i]);
+                }
+                else if (text[counter4] == alpha[i])
+                {
+                    printf("%c", key[i] + 32);
+                }
+            }
+        }
+        else
+        {
             printf("%c", text[counter4]);
-           }
-       }
+        }
 
-        printf("\n");
-        return 0;
+
     }
-
+    printf("\n");
+    return 0;
 }
+
